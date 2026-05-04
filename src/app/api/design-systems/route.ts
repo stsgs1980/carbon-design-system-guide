@@ -505,17 +505,6 @@ export async function GET() {
   try {
     const categories = [] // Prisma bypassed for static deploy
       include: {
-        items: {
-          include: {
-            features: {
-              orderBy: { order: 'asc' }
-            }
-          },
-          orderBy: { order: 'asc' }
-        }
-      },
-      orderBy: { order: 'asc' }
-    })
 
     // Если база пуста, возвращаем статичные данные
     if (categories.length === 0) {
