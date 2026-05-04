@@ -504,7 +504,7 @@ const designSystemsData = [
 export async function GET() {
   try {
     const categories = [] // Prisma bypassed for static deploy
-      include: {
+
 
     // Если база пуста, возвращаем статичные данные
     if (categories.length === 0) {
