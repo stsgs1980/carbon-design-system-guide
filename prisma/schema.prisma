@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Категории дизайн-систем
+model Category {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  icon        String
+  order       Int      @default(0)
+  items       Item[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Элементы внутри категории
+model Item {
+  id          String   @id @default(cuid())
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  name        String
+  description String
+  url         String?
+  features    Feature[]
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Функции/особенности элемента
+model Feature {
+  id     String @id @default(cuid())
+  itemId String
+  item   Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  name   String
+  order  Int    @default(0)
+}
+
+// Пользователи (для будущего расширения)
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Закладки/избранное (для будущего расширения)
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  itemId    String
+  createdAt DateTime @default(now())
+  
+  @@unique([userId, itemId])
+}
