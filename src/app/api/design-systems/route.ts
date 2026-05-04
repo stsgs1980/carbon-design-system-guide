@@ -503,7 +503,7 @@ const designSystemsData = [
 
 export async function GET() {
   try {
-    const categories = await db.category.findMany({
+    const categories = [] // Prisma bypassed for static deploy
       include: {
         items: {
           include: {
