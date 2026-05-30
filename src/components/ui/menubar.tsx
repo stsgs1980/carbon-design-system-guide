@@ -1,5 +1,9 @@
 "use client"
 
+// [ANTI-MONOLITH EXCEPTION] Reason: Well-organized collection of tiny Radix wrappers (<15 lines each).
+// Decomposition would add import overhead without readability gain.
+// Revisit date: 2026-Q3
+
 import * as React from "react"
 import * as MenubarPrimitive from "@radix-ui/react-menubar"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
