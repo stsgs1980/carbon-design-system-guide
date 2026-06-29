@@ -184,7 +184,7 @@ This scaffold includes a comprehensive set of modern web development tools:
 4. **Deploy with confidence** using the production-ready setup
 
 
-Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
+Built by [Z.ai](https://chat.z.ai).
 
 
 ## Features
